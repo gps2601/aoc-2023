@@ -2,7 +2,6 @@ use std::collections::{HashMap, HashSet};
 use crate::utilities::input;
 
 #[allow(dead_code)]
-
 fn part_1(input_file: &str) -> i32 {
     let grid: Vec<Vec<char>> = input::as_lines(input_file).into_iter().map(|s| s.chars().collect()).collect();
     let all_found_numbers : Vec<FoundNumber> = grid.iter().enumerate().flat_map(|(index, row)| {
