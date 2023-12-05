@@ -13,6 +13,10 @@ pub mod day_4 {
     pub mod day_4;
 }
 
+pub mod day_5 {
+    pub mod day_5;
+}
+
 pub mod utilities {
     pub mod input;
 }

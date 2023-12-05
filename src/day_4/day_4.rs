@@ -1,6 +1,7 @@
 use std::collections::{HashMap, VecDeque};
 use crate::utilities::input;
 
+#[allow(dead_code)]
 fn part_1(file_path: &str) -> i32 {
     let input_lines = input::as_lines(file_path);
     let games: Vec<Game> = input_lines.iter().map(|line| to_game(line)).collect();
@@ -8,7 +9,7 @@ fn part_1(file_path: &str) -> i32 {
     all_scores.iter().sum()
 }
 
-
+#[allow(dead_code)]
 fn part_2(file_path: &str) -> i32 {
     let games: Vec<Game> = starting_games(file_path);
     let mut need_to_process: VecDeque<Game> = VecDeque::new();
@@ -36,12 +37,14 @@ fn part_2(file_path: &str) -> i32 {
     card_count_map.values().sum()
 }
 
+#[allow(dead_code)]
 fn starting_games(file_path: &str) -> Vec<Game> {
     let input_lines = input::as_lines(file_path);
     let games: Vec<Game> = input_lines.iter().map(|line| to_game(line)).collect();
     games
 }
 
+#[allow(dead_code)]
 fn to_game(line: &String) -> Game {
     // Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
     let card_to_numbers: Vec<&str> = line.split(": ").collect();
@@ -96,22 +99,22 @@ mod tests {
 
     #[test]
     fn part_1_sample() {
-        assert_eq!(13, part_1("src/day_4/day_4_sample.txt"))
+        assert_eq!(13, part_1("src/day_4/day_5_sample.txt"))
     }
 
     #[test]
     fn part_1_full() {
-        assert_eq!(22488, part_1("src/day_4/day_4.txt"))
+        assert_eq!(22488, part_1("src/day_4/day_5.txt"))
     }
 
     #[test]
     fn part_2_sample() {
-        assert_eq!(30, part_2("src/day_4/day_4_sample.txt"))
+        assert_eq!(30, part_2("src/day_4/day_5_sample.txt"))
     }
 
     #[test]
     fn part_2_full() {
-        assert_eq!(7013204, part_2("src/day_4/day_4.txt"))
+        assert_eq!(7013204, part_2("src/day_4/day_5.txt"))
     }
 
     #[test]
