@@ -99,22 +99,22 @@ mod tests {
 
     #[test]
     fn part_1_sample() {
-        assert_eq!(13, part_1("src/day_4/day_5_sample.txt"))
+        assert_eq!(13, part_1("src/day_4/day_4_sample.txt"))
     }
 
     #[test]
     fn part_1_full() {
-        assert_eq!(22488, part_1("src/day_4/day_5.txt"))
+        assert_eq!(22488, part_1("src/day_4/day_4.txt"))
     }
 
     #[test]
     fn part_2_sample() {
-        assert_eq!(30, part_2("src/day_4/day_5_sample.txt"))
+        assert_eq!(30, part_2("src/day_4/day_4_sample.txt"))
     }
 
     #[test]
     fn part_2_full() {
-        assert_eq!(7013204, part_2("src/day_4/day_5.txt"))
+        assert_eq!(7013204, part_2("src/day_4/day_4.txt"))
     }
 
     #[test]
@@ -123,7 +123,7 @@ mod tests {
             card_no: 1,
             winning_numbers: vec![41, 48, 83, 86, 17],
             player_numbers: vec![83, 86, 6, 31, 17, 9, 48, 53],
-            number_of_wins: None,
+            number_of_wins: Some(4),
         };
         let result = to_game(&"Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53".to_string());
         assert_eq!(expected, result);
@@ -132,7 +132,7 @@ mod tests {
             card_no: 2,
             winning_numbers: vec![13, 32, 20, 16, 61],
             player_numbers: vec![61, 30, 68, 82, 17, 32, 24, 19],
-            number_of_wins: None,
+            number_of_wins: Some(2),
         };
         let result = to_game(&"Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19".to_string());
         assert_eq!(expected, result);
@@ -141,7 +141,7 @@ mod tests {
             card_no: 3,
             winning_numbers: vec![1, 21, 53, 59, 44],
             player_numbers: vec![69, 82, 63, 72, 16, 21, 14, 1],
-            number_of_wins: None,
+            number_of_wins: Some(2),
         };
         let result = to_game(&"Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1".to_string());
         assert_eq!(expected, result);
