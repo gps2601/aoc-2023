@@ -17,7 +17,7 @@ struct ConversionRange {
 
 #[allow(dead_code)]
 fn part_1(file_path: &str) -> i64 {
-    let seeds: Vec<i64> = input::as_lines(file_path).first().expect("should exist").split_whitespace().filter_map(|it| it.parse().ok()).collect();
+    let seeds: Vec<i64> = input.lines().map(String::from).first().expect("should exist").split_whitespace().filter_map(|it| it.parse().ok()).collect();
     let seed_to_types: Vec<SeedToType> = input::all(file_path)
         .splitn(2, "\n\n")
         .last().expect("should exist")
