@@ -55,6 +55,7 @@ fn find_number_positions_in_row(row: &Vec<char>, y_pos: i32) -> Vec<FoundNumber>
     found_numbers
 }
 
+#[allow(clippy::needless_range_loop)]
 fn get_surrounding_values(grid: &Vec<Vec<char>>, x: usize, y: usize) -> Vec<char> {
     let mut surrounding_values : Vec<char> = Vec::new();
     if x < grid.len() && y < grid[0].len() {

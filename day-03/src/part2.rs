@@ -43,6 +43,7 @@ pub fn process(
     Ok(total.to_string())
 }
 
+#[allow(clippy::needless_range_loop)]
 fn get_gear(grid: &Vec<Vec<char>>, x: usize, y: usize) -> Vec<String> {
     let mut surrounding_values: Vec<String> = Vec::new();
     // Check if the coordinates are within the bounds of the grid
