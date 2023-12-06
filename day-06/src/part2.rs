@@ -3,37 +3,19 @@ use crate::custom_error::AocError;
 #[tracing::instrument]
 pub fn process() -> miette::Result<String, AocError> {
     let race_1 = Race {
-        time: 45,
-        distance: 305,
+        time: 45977295,
+        distance: 305106211101695,
     };
-
-    let race_2 = Race {
-        time: 97,
-        distance: 1062,
-    };
-
-    let race_3 = Race {
-        time: 72,
-        distance: 1110,
-    };
-
-    let race_4 = Race {
-        time: 95,
-        distance: 1695,
-    };
-
-    let race_win_numbers: [i64; 4] = [race_1, race_2, race_3, race_4].map(number_of_ways_to_win);
-    let multiplied: i64 = race_win_numbers.iter().product();
-    Ok(multiplied.to_string())
+    Ok(number_of_ways_to_win(race_1).to_string())
 }
 
 struct Race {
-    time: i64,
-    distance: i64,
+    time: u64,
+    distance: u64
 }
 
-fn number_of_ways_to_win(race: Race) -> i64 {
-    let mut no_wins: i64 = 0;
+fn number_of_ways_to_win(race: Race) -> u64 {
+    let mut no_wins: u64 = 0;
     for i in 0..race.time + 1 {
         let speed = i;
         let time_to_race = race.time - i;
@@ -47,4 +29,11 @@ fn number_of_ways_to_win(race: Race) -> i64 {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
+    #[test]
+    fn test_process() {
+        let race = Race { time: 71530, distance: 940200 };
+        assert_eq!(71503, number_of_ways_to_win(race));
+    }
 }
