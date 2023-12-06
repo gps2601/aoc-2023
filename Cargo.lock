@@ -371,6 +371,7 @@ dependencies = [
  "criterion",
  "dhat",
  "divan",
+ "indicatif",
  "itertools 0.12.0",
  "miette",
  "nom",

@@ -1,8 +1,8 @@
 use std::ops::Range;
-use crate::custom_error::AocError;
-use indicatif::ParallelProgressIterator;
 
 use rayon::prelude::*;
+
+use crate::custom_error::AocError;
 
 #[tracing::instrument]
 pub fn process(
@@ -27,7 +27,7 @@ pub fn process(
                 ConversionRange {
                     dest_start: numbers[0],
                     source_start: numbers[1],
-                    source_range: numbers[1]..numbers[1] + numbers[2]
+                    source_range: numbers[1]..numbers[1] + numbers[2],
                 }
             }).collect();
             SeedToType {
@@ -36,7 +36,7 @@ pub fn process(
         })
         .collect();
 
-    let lowest: Vec<i64> = seeds.into_par_iter().progress().map(|seed| {
+    let lowest: i64 = seeds.into_par_iter().map(|seed| {
         let mut seed_to_convert: i64 = seed;
         for map in &seed_to_types {
             let maybe_range = map
@@ -53,10 +53,9 @@ pub fn process(
             }
         }
         seed_to_convert
-    }).collect();
+    }).min().expect("should exist");
 
-    let min_value = lowest.iter().cloned().min().expect("should exist");
-    Ok(min_value.to_string())
+    Ok(lowest.to_string())
 }
 
 struct SeedToType {
