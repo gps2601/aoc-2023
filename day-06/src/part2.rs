@@ -1,3 +1,4 @@
+use rayon::iter::*;
 use crate::custom_error::AocError;
 
 #[tracing::instrument]
@@ -11,20 +12,18 @@ pub fn process() -> miette::Result<String, AocError> {
 
 struct Race {
     time: u64,
-    distance: u64
+    distance: u64,
 }
 
 fn number_of_ways_to_win(race: Race) -> u64 {
-    let mut no_wins: u64 = 0;
-    for i in 0..race.time + 1 {
-        let speed = i;
-        let time_to_race = race.time - i;
-        let distance_covered = speed * time_to_race;
-        if distance_covered > race.distance {
-            no_wins += 1
-        }
-    }
-    no_wins
+    (0..race.time)
+        .into_par_iter()
+        .filter(|&i| {
+            let time_to_race = race.time - i;
+            let distance_covered = i * time_to_race;
+            distance_covered > race.distance
+        })
+        .count() as u64
 }
 
 #[cfg(test)]
